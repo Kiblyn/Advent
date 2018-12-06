@@ -7,8 +7,8 @@ bords_x = [min(points[i][0] for i in range(len(points)))-1, max(points[i][0] for
 bords_y = [min(points[i][1] for i in range(len(points)))-1, max(points[i][1] for i in range(len(points)))+2]
 dist_point = lambda i:abs(x - points[i][0])+abs(y - points[i][1])
 
-for x in range(0, 361):
-    for y in range(0, 361):
+for x in range(bords_x[0], bords_x[1]):
+    for y in range(bords_y[0], bords_y[1]):
         nb_region += int(sum(dist_point(i) for i in range(len(points))) < 10000)
         indices = sorted(range(len(points)), key=dist_point)
         if dist_point(indices[0]) == dist_point(indices[1]): continue
