@@ -1,10 +1,8 @@
-points = []
-for ligne in open("input6.txt").read().splitlines():
-    points.append([int(x) for x in ligne.split(", ")])
+points = [[int(x) for x in ligne.split(", ")] for ligne in open("input6.txt").read().splitlines()]
 nb_points = [0]*len(points)
 nb_region = 0
-bords_x = [min(points[i][0] for i in range(len(points)))-1, max(points[i][0] for i in range(len(points)))+2]
-bords_y = [min(points[i][1] for i in range(len(points)))-1, max(points[i][1] for i in range(len(points)))+2]
+bords_x = [min(x[0] for x in points)-1, max(x[0] for x in points)+2]
+bords_y = [min(x[1] for x in points)-1, max(x[1] for x in points)+2]
 dist_point = lambda i:abs(x - points[i][0])+abs(y - points[i][1])
 
 for x in range(bords_x[0], bords_x[1]):
